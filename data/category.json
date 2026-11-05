@@ -1,0 +1,30 @@
+[
+  {
+    "id": "b2b50c38-bb25-484a-b490-037c32a953cd",
+    "name": "Technology",
+    "description": "Tech news and esports",
+    "imageurl": "https://plus.unsplash.com/premium_photo-1683121716061-3faddf4dc504?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    "createdAt": "2026-10-30T12:16:10.567Z"
+  },
+  {
+    "id": "dcc0ce9b-b618-4ea6-9be2-2bd0b1a5bcad",
+    "name": "Sports",
+    "description": "All Sports news",
+    "imageurl": "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    "createdAt": "2026-11-05T18:20:56.976Z"
+  },
+  {
+    "id": "bc117d6d-af57-494e-bc85-d9696092e5a6",
+    "name": "Designing",
+    "description": "All news about Designing",
+    "imageurl": "https://plus.unsplash.com/premium_photo-1661770132071-026114fffb61?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    "createdAt": "2026-11-05T18:22:46.046Z"
+  },
+  {
+    "id": "2aa9d140-474a-4f5d-b581-c13903c728e3",
+    "name": "Vehicle",
+    "description": "All news about Vehicle",
+    "imageurl": "https://images.unsplash.com/photo-1704340142770-b52988e5b6eb?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    "createdAt": "2026-11-05T18:24:21.852Z"
+  }
+]

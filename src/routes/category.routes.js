@@ -1,8 +1,7 @@
 const express = require("express");
-const ContentWebController = require("../../controllers/web/content.controller");
-
+const CategoryController = require("../controller/category.controller");
 const router = express.Router();
-const controller = new ContentWebController();
+const controller = new CategoryController();
 
 router.get("/", controller.index);
 router.get("/create", controller.createForm);

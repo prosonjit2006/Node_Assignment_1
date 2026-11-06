@@ -1,2 +1,40 @@
-<%- include("../partials/header", { title }) %><%- include("../partials/navbar") %>
-<main class="mx-auto max-w-2xl px-5 py-12"><a href="/category" class="text-sm text-stone-500 hover:text-stone-900">← Back to categories</a><section class="mt-6 rounded-3xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8"><p class="text-xs font-semibold uppercase tracking-[.2em] text-stone-500">Category details</p><h1 class="mt-2 text-2xl font-semibold tracking-tight"><%= title %></h1><p class="mt-2 text-sm text-stone-500">Add a clear name, description and image.</p><% if(error){ %><p class="mt-5 rounded-xl bg-red-50 p-3 text-sm text-red-700"><%= error %></p><% } %><form class="mt-7 space-y-5" action="<%= formAction %>" method="POST"><div><label class="mb-2 block text-sm font-medium" for="name">Category name</label><input id="name" class="w-full rounded-xl border border-stone-300 px-4 py-3 text-sm outline-none transition focus:border-stone-900 focus:ring-2 focus:ring-stone-200" type="text" name="name" value="<%= category.name || '' %>" placeholder="e.g. Technology" required minlength="3"></div><div><label class="mb-2 block text-sm font-medium" for="description">Description</label><textarea id="description" class="w-full rounded-xl border border-stone-300 px-4 py-3 text-sm outline-none transition focus:border-stone-900 focus:ring-2 focus:ring-stone-200" name="description" rows="4" placeholder="What belongs in this category?" required minlength="3"><%= category.description || '' %></textarea></div><div><label class="mb-2 block text-sm font-medium" for="imageurl">Image URL</label><input id="imageurl" class="w-full rounded-xl border border-stone-300 px-4 py-3 text-sm outline-none transition focus:border-stone-900 focus:ring-2 focus:ring-stone-200" type="url" name="imageurl" value="<%= category.imageurl || '' %>" placeholder="https://example.com/image.jpg" required></div><div class="flex gap-3 pt-2"><button class="rounded-xl bg-stone-900 px-5 py-3 text-sm font-medium text-white hover:bg-stone-700"><%= submitLabel %></button><a href="/category" class="rounded-xl border border-stone-300 px-5 py-3 text-sm font-medium hover:bg-stone-50">Cancel</a></div></form></section></main><%- include("../partials/footer") %>
+<%- include("../partials/header", { title }) %>
+<%- include("../partials/navbar") %>
+        <main class="mx-auto max-w-2xl px-5 py-12"><a href="/category"
+                class="text-sm text-stone-500 hover:text-stone-900">← Back to categories</a>
+            <section class="mt-6 rounded-3xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8">
+                <p class="text-xs font-semibold uppercase tracking-[.2em] text-stone-500">Category details</p>
+                <h1 class="mt-2 text-2xl font-semibold tracking-tight">
+                    <%= title %>
+                </h1>
+                <p class="mt-2 text-sm text-stone-500">Add a clear name, description and image.</p>
+                <% if(error){ %>
+                    <p class="mt-5 rounded-xl bg-red-50 p-3 text-sm text-red-700">
+                        <%= error %>
+                    </p>
+                    <% } %>
+                        <form class="mt-7 space-y-5" action="<%= formAction %>" method="POST">
+                            <div><label class="mb-2 block text-sm font-medium" for="name">Category name</label><input
+                                    id="name"
+                                    class="w-full rounded-xl border border-stone-300 px-4 py-3 text-sm outline-none transition focus:border-stone-900 focus:ring-2 focus:ring-stone-200"
+                                    type="text" name="name" value="<%= category.name || '' %>"
+                                    placeholder="e.g. Technology" required minlength="3"></div>
+                            <div><label class="mb-2 block text-sm font-medium"
+                                    for="description">Description</label><textarea id="description"
+                                    class="w-full rounded-xl border border-stone-300 px-4 py-3 text-sm outline-none transition focus:border-stone-900 focus:ring-2 focus:ring-stone-200"
+                                    name="description" rows="4" placeholder="What belongs in this category?" required
+                                    minlength="3"><%= category.description || '' %></textarea></div>
+                            <div><label class="mb-2 block text-sm font-medium" for="imageurl">Image URL</label><input
+                                    id="imageurl"
+                                    class="w-full rounded-xl border border-stone-300 px-4 py-3 text-sm outline-none transition focus:border-stone-900 focus:ring-2 focus:ring-stone-200"
+                                    type="url" name="imageurl" value="<%= category.imageurl || '' %>"
+                                    placeholder="https://example.com/image.jpg" required></div>
+                            <div class="flex gap-3 pt-2"><button
+                                    class="rounded-xl bg-stone-900 px-5 py-3 text-sm font-medium text-white hover:bg-stone-700">
+                                    <%= submitLabel %>
+                                </button><a href="/category"
+                                    class="rounded-xl border border-stone-300 px-5 py-3 text-sm font-medium hover:bg-stone-50">Cancel</a>
+                            </div>
+                        </form>
+            </section>
+        </main><%- include("../partials/footer") %>

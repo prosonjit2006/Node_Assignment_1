@@ -1,76 +1,77 @@
-# Category-Based CMS — Class-Based Express + EJS
+# Artify CMS
 
-This version follows the structure and coding style in your uploaded `CMS_crud` project:
-
-- CommonJS (`require` / `module.exports`)
-- Class-based models, services and controllers
-- `src/views/partials/header.ejs`, `navbar.ejs`, and `footer.ejs`
-- Main page at `src/views/home.ejs`
-- Category and content EJS pages grouped into their own view folders
-- JSON file storage only; no database
+A category-based content management system built with Express, EJS and JSON file storage. The project follows the folder naming and class-based coding style used in Assignment 1.
 
 ## Setup
 
 ```bash
 npm install
-cp .env.example .env
 npm run dev
 ```
 
 Open `http://localhost:5000`.
 
-## Folder structure
+The server reads the port from `.env`. The default is `5000`.
+
+## Project structure
 
 ```text
 CMS_crud/
 ├── data/
 │   ├── category.json
 │   └── content.json
-├── public/
-│   ├── css/style.css
-│   └── js/main.js
 ├── src/
-│   ├── controllers/
-│   │   ├── api/
-│   │   └── web/
-│   ├── models/
+│   ├── controller/
+│   │   ├── category.controller.js
+│   │   ├── content.controller.js
+│   │   └── public.controller.js
+│   ├── model/
+│   │   ├── category.model.js
+│   │   └── content.model.js
 │   ├── routes/
-│   │   ├── api/
-│   │   └── web/
+│   │   ├── category.routes.js
+│   │   ├── category.api.routes.js
+│   │   ├── content.routes.js
+│   │   ├── content.api.routes.js
+│   │   └── public.routes.js
 │   ├── services/
+│   │   ├── category.services.js
+│   │   └── content.services.js
 │   ├── utils/
+│   │   └── AppErrors.js
 │   ├── validation/
+│   │   ├── category.validation.js
+│   │   └── content.validation.js
 │   └── views/
-│       ├── partials/
 │       ├── category/
 │       ├── content/
-│       ├── errors/
+│       ├── partials/
 │       └── home.ejs
 ├── server.js
 └── package.json
 ```
 
-## EJS routes
+## Website routes
 
 | Page | Route |
 |---|---|
 | Home | `/` |
 | Categories | `/category` |
 | Create category | `/category/create` |
-| Edit category | `/category/:id/edit` |
 | Category details | `/category/:id` |
+| Edit category | `/category/:id/edit` |
 | Content management | `/content` |
 | Create content | `/content/create` |
+| Content details | `/content/:id` |
 | Edit content | `/content/:id/edit` |
-| Published content detail | `/content/:id` |
 
-EJS create/edit forms submit to the web routes. The forms use `method-override` for PATCH and DELETE.
+The website forms use `method-override` for PATCH and DELETE requests.
 
-## API routes for Postman
+## API routes
 
 Base URL: `http://localhost:5000`
 
-### Category
+### Category API
 
 - GET `/v1/category`
 - GET `/v1/category/:id`
@@ -78,7 +79,7 @@ Base URL: `http://localhost:5000`
 - PATCH `/v1/category/:id`
 - DELETE `/v1/category/:id`
 
-Category request body:
+Example category request body:
 
 ```json
 {
@@ -88,7 +89,7 @@ Category request body:
 }
 ```
 
-### Content
+### Content API
 
 - GET `/v1/content`
 - GET `/v1/content?categoryId=CATEGORY_ID`
@@ -98,7 +99,7 @@ Category request body:
 - PATCH `/v1/content/:id`
 - DELETE `/v1/content/:id`
 
-Content request body:
+Example content request body:
 
 ```json
 {
@@ -111,20 +112,18 @@ Content request body:
 }
 ```
 
-Import `postman/Category-CMS.postman_collection.json` into Postman.
-
 ## Data rules
 
 - IDs are generated with `crypto.randomUUID()`.
-- Category names are unique (case-insensitive).
-- Categories use their IDs for routing; no slug field is stored.
+- Category names must be unique, ignoring letter case.
+- Categories use their IDs for lookups. There is no category slug field.
 - Content must reference an existing category.
-- Content updates preserve `id` and `createdAt`, and update `updatedAt`.
-- A category cannot be deleted while it has content assigned.
-- Public pages display published content only; drafts remain in the content management listing.
-- JSON is stored in `data/`, outside `public/`.
-- File operations use `fs/promises`, with writes queued within one Node.js process.
+- Content status must be `draft` or `published`.
+- Updating content preserves its ID and creation date, and updates its modification date.
+- A category cannot be deleted while content is assigned to it.
+- The public home page displays published content only.
+- JSON data is stored in the `data/` directory. There is no `public/` directory or separate CSS/JS asset folder. Tailwind utility classes are used directly in EJS views.
 
-## Important
+## Note
 
-The JSON write queue protects writes in one Node.js process only. For a multi-process or production deployment, use a database or implement cross-process file locking. Add authentication/authorization, CSRF protection, rate limiting and backups before exposing the management routes publicly.
+This assignment uses local JSON files and synchronous file operations to stay consistent with the Assignment 1 implementation style. It is suitable for a learning assignment, not a concurrent production deployment. For production, use a database and add authentication, authorization, CSRF protection, validation hardening and backups.

@@ -1,4 +1,4 @@
-const AppError = require("../utils/AppError");
+const AppError = require("../utils/AppErrors");
 
 class ContentValidation {
   static validate(payload) {

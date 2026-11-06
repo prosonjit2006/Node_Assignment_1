@@ -3,7 +3,6 @@ const { randomUUID } = require("crypto");
 class Content {
   constructor(categoryId, title, description, body, thumbnail, status) {
     const now = new Date().toISOString();
-
     this.id = randomUUID();
     this.categoryId = categoryId;
     this.title = title.trim();

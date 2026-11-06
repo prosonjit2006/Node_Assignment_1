@@ -1,6 +1,5 @@
 const express = require("express");
-const PublicController = require("../../controllers/web/public.controller");
-
+const PublicController = require("../controller/public.controller");
 const router = express.Router();
 const controller = new PublicController();
 
